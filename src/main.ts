@@ -10,6 +10,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter({ logger: true }),
+    { logger: ['error', 'warn'] },
   );
   //using this we can validate all http request in our dtos
   app.useGlobalPipes(

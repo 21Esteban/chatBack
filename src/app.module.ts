@@ -12,9 +12,9 @@ import { User } from './users/user.entity';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ep-late-poetry-a5gjfy1e.us-east-2.aws.neon.tech',
-      username: 'cursoposgres_owner',
-      password: 'mBEZ82KQaYFg',
+      host: 'ep-orange-king-a52a56rh.us-east-2.aws.neon.tech',
+      username: 'chat_owner',
+      password: 'IEkPs0GCqT8t',
       database: 'chat',
       entities: [User],
       synchronize: true, //no usar en produccion
