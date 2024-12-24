@@ -22,7 +22,7 @@ export class UsersService {
   async findUserByEmail(email: string): Promise<User | null> {
     return this.usersRepository.findOne({
       where: {
-        Email: email,
+        email: email,
       },
     });
   }

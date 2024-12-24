@@ -17,7 +17,7 @@ export class AuthService {
   async signUp(createUserDto: CreateUserDto, reply: FastifyReply) {
     try {
       const user: User | null = await this.userService.findUserByEmail(
-        createUserDto.Email,
+        createUserDto.email,
       );
       if (user) {
         return reply
@@ -47,9 +47,9 @@ export class AuthService {
     reply: FastifyReply,
   ): Promise<any> {
     try {
-      const { Email, password } = updateUserDto;
+      const { email, password } = updateUserDto;
 
-      const user = await this.userService.findUserByEmail(Email);
+      const user = await this.userService.findUserByEmail(email);
       if (!user) {
         return reply.code(HttpStatus.BAD_REQUEST).send({
           ok: false,
