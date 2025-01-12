@@ -5,8 +5,11 @@ import {
   PrimaryGeneratedColumn,
   BeforeInsert,
   BeforeUpdate,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Chat } from 'src/chat/entities/chat.entity';
 
 @Entity()
 export class User {
@@ -29,6 +32,11 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  // Relación muchos a muchos con la tabla `Chat`
+  @ManyToMany(() => Chat, (chat) => chat.participants)
+  @JoinTable() // Necesario para crear la tabla intermedia
+  chats: Chat[];
 
   @BeforeInsert()
   @BeforeUpdate()

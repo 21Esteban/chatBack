@@ -64,8 +64,9 @@ export class AuthService {
         });
       }
       const payload = { id: user.id, userName: user.userName };
+      console.log(payload);
       const accessToken = await this.jwtService.signAsync(payload);
-
+      console.log(accessToken);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password: _, ...result } = user;
 
