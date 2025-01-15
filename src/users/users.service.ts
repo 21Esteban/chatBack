@@ -27,6 +27,10 @@ export class UsersService {
     });
   }
 
+  async findUserByPhoneNumber(phoneNumber: string): Promise<User | null> {
+    return this.usersRepository.findOne({ where: { number: phoneNumber } });
+  }
+
   async createUser(user: CreateUserDto): Promise<User> {
     const userEntity = this.usersRepository.create(user);
     return await this.usersRepository.save(userEntity);

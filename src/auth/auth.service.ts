@@ -29,7 +29,11 @@ export class AuthService {
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password, ...result } = newUser;
-      const payload = { id: newUser.id, userName: newUser.userName };
+      const payload = {
+        id: newUser.id,
+        userName: newUser.userName,
+        phoneNumber: newUser.number,
+      };
       const accessToken = await this.jwtService.signAsync(payload);
       return reply.code(HttpStatus.CREATED).send({
         ok: true,
@@ -63,7 +67,11 @@ export class AuthService {
           message: 'Invalid password',
         });
       }
-      const payload = { id: user.id, userName: user.userName };
+      const payload = {
+        id: user.id,
+        userName: user.userName,
+        phoneNumber: user.number,
+      };
       console.log(payload);
       const accessToken = await this.jwtService.signAsync(payload);
       console.log(accessToken);
