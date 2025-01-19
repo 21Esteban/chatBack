@@ -7,9 +7,11 @@ import {
   BeforeUpdate,
   ManyToMany,
   JoinTable,
+  OneToMany,
 } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { Chat } from 'src/chat/entities/chat.entity';
+import { Message } from 'src/message/entities/message.entity';
 
 @Entity()
 export class User {
@@ -23,7 +25,7 @@ export class User {
   email: string;
 
   @Column()
-  number: string;
+  phoneNumber: string;
 
   @Column()
   // "This exclude property works for responses only if the entity is returned in the response. It does not work if a plain object is returned."
@@ -37,6 +39,10 @@ export class User {
   @ManyToMany(() => Chat, (chat) => chat.participants)
   @JoinTable() // Necesario para crear la tabla intermedia
   chats: Chat[];
+
+  // User relations to messages , one user can have many messages but one message only has one user
+  @OneToMany(() => Message, (message) => message.user)
+  messages: Message[];
 
   @BeforeInsert()
   @BeforeUpdate()

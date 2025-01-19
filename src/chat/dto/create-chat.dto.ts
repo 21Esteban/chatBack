@@ -2,6 +2,9 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateChatDto {
   @IsNotEmpty()
-  phoneNumberContact: string;
+  chatName: string;
+  @IsNotEmpty()
   phoneNumber: string;
+  @IsNotEmpty()
+  phoneNumberContact: string;
 }

@@ -32,7 +32,7 @@ export class AuthService {
       const payload = {
         id: newUser.id,
         userName: newUser.userName,
-        phoneNumber: newUser.number,
+        phoneNumber: newUser.phoneNumber,
       };
       const accessToken = await this.jwtService.signAsync(payload);
       return reply.code(HttpStatus.CREATED).send({
@@ -70,11 +70,9 @@ export class AuthService {
       const payload = {
         id: user.id,
         userName: user.userName,
-        phoneNumber: user.number,
+        phoneNumber: user.phoneNumber,
       };
-      console.log(payload);
       const accessToken = await this.jwtService.signAsync(payload);
-      console.log(accessToken);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password: _, ...result } = user;
 

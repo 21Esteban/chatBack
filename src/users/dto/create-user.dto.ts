@@ -12,7 +12,7 @@ export class CreateUserDto {
   password: string;
 
   @IsNotEmpty()
-  number: string;
+  phoneNumber: string;
 }
 
 // With these rules in place, if a request hits our endpoint with an invalid email property in the request body, the application will automatically respond with a 400 Bad Request code, along with the following response body:

@@ -16,6 +16,7 @@ export class ChatService {
   ) {}
 
   async create(createChatDto: CreateChatDto, reply: FastifyReply) {
+    console.log(createChatDto);
     const contactUser = await this.userService.findUserByPhoneNumber(
       createChatDto.phoneNumberContact,
     );
@@ -41,8 +42,8 @@ export class ChatService {
       .send({ ok: true, message: 'Chat created', chat });
   }
 
-  findAll() {
-    return `This action returns all chat`;
+  findAll(headers: any, reply: FastifyReply) {
+    return reply.code(HttpStatus.OK).send(headers);
   }
 
   findOne(id: number) {
